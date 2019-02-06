@@ -20,7 +20,7 @@
             <Button Content="Funktion 1" Margin="10" Command="{Binding FunctionOneCommand}"/>
             <Button Content="Funktion 2" Margin="10"/>
         </StackPanel>
-        <TextBlock Grid.Column="1" Grid.Row="1" Background="AliceBlue" Text="{Binding IsConnected}"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Background="GreenYellow" Text="{Binding IsConnected}"/>
         <Button Content="Switch bool" Command="{Binding ToggleArgumentCommand}"/>
     </Grid>
 </Window>
