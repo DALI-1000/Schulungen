@@ -48,15 +48,15 @@ namespace SageAufbaukursCSharp.ServiceImplementations
             catch (PathTooLongException ex)
             {
                 Message = ex.Message;
-                try
+            }
+            try
+            {
+                FaultPath = Path.Combine(Environment.GetEnvironmentVariable("PROGRAMDATA"), "Errorfile.log");
+                using (var sw = new StreamWriter(FaultPath))
                 {
-                    FaultPath = Path.Combine(Environment.GetEnvironmentVariable("PROGRAMDATA"), "Errorfile.log");
-                    using (var sw = new StreamWriter(FaultPath))
-                    {
-                        sw.Write("huhu");
-                    }
-                    return true;
+                    sw.Write("huhu");
                 }
+                return true;
             }
             catch (Exception exa)
             {
@@ -71,5 +71,6 @@ namespace SageAufbaukursCSharp.ServiceImplementations
                 return false;
             }
 
+        }
     }
 }
