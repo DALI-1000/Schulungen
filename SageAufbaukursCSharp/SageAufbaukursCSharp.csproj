@@ -58,7 +58,10 @@
     </ApplicationDefinition>
     <Compile Include="ActionCommand.cs" />
     <Compile Include="ServiceImplementations\PartnerUtilDummy.cs" />
+    <Compile Include="ServiceImplementations\SaveFilesUtil.cs" />
     <Compile Include="Services\IPartnerUtil.cs" />
+    <Compile Include="Services\IProblemSolver.cs" />
+    <Compile Include="Services\ISaveFileUtil.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
