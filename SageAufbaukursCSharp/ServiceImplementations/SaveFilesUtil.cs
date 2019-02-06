@@ -32,7 +32,7 @@ namespace SageAufbaukursCSharp.ServiceImplementations
             }
             catch (UnauthorizedAccessException ex)
             {
-                Message = uae.Message;
+                Message = ex.Message;
                 Fault = ex;
                 return false;
             }
@@ -44,13 +44,32 @@ namespace SageAufbaukursCSharp.ServiceImplementations
                     sw.Write("Fehlerspeicher");
                 }
             }
-            
-            catch (Exception e)
-            {
 
-                Fault = e;
+            catch (PathTooLongException ex)
+            {
+                Message = ex.Message;
+                try
+                {
+                    FaultPath = Path.Combine(Environment.GetEnvironmentVariable("PROGRAMDATA"), "Errorfile.log");
+                    using (var sw = new StreamWriter(FaultPath))
+                    {
+                        sw.Write("huhu");
+                    }
+                    return true;
+                }
+            }
+            catch (Exception exa)
+            {
+                //Jetzt geben wir auf!
+                Fault = exa;
                 return false;
             }
-        }
+
+            catch (PathTooLongException ex)
+            {
+                Fault = ex;
+                return false;
+            }
+
     }
 }
